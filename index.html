@@ -26,7 +26,6 @@
             --text-muted: #666666;
             --border: #2a2a2a;
             --border-hover: #3a3a3a;
-            --sidebar-width: 260px;
         }
 
         body {
@@ -37,805 +36,706 @@
             overflow-x: hidden;
         }
 
-        /* Top Banner */
-        .top-banner {
+        /* Header */
+        .header {
             position: fixed;
             top: 0;
             left: 0;
             right: 0;
-            height: 64px;
+            z-index: 100;
             background: var(--bg-secondary);
             border-bottom: 1px solid var(--border);
+        }
+
+        .header-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 16px 24px;
             display: flex;
             align-items: center;
             justify-content: space-between;
-            padding: 0 32px;
-            z-index: 100;
-            backdrop-filter: blur(12px);
+            gap: 24px;
         }
 
-        .banner-logo {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .banner-logo .logo-icon {
-            width: 32px;
-            height: 32px;
-            background: var(--brand);
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 700;
-            font-size: 14px;
-            color: white;
-        }
-
-        .banner-logo h1 {
-            font-size: 18px;
+        .logo {
+            font-size: 20px;
             font-weight: 700;
             color: var(--text-primary);
+            white-space: nowrap;
         }
 
-        .banner-stats {
-            display: flex;
-            align-items: center;
-            gap: 24px;
-            font-size: 14px;
-            color: var(--text-secondary);
-        }
-
-        .banner-stats .stat {
-            display: flex;
-            align-items: center;
-            gap: 6px;
-        }
-
-        .banner-stats .stat-number {
+        .logo span {
             color: var(--brand);
-            font-weight: 600;
         }
 
-        .search-container {
+        .search-box {
+            flex: 1;
+            max-width: 400px;
             position: relative;
         }
 
-        .search-input {
+        .search-box input {
+            width: 100%;
+            padding: 10px 16px 10px 40px;
             background: var(--bg-primary);
             border: 1px solid var(--border);
             border-radius: 8px;
-            padding: 8px 16px 8px 36px;
             color: var(--text-primary);
             font-size: 14px;
-            width: 240px;
+            font-family: inherit;
             outline: none;
-            transition: border-color 0.2s, box-shadow 0.2s;
+            transition: border-color 0.2s;
         }
 
-        .search-input:focus {
+        .search-box input:focus {
             border-color: var(--brand);
-            box-shadow: 0 0 0 3px var(--brand-glow);
         }
 
-        .search-input::placeholder {
+        .search-box input::placeholder {
             color: var(--text-muted);
         }
 
-        .search-icon {
+        .search-box svg {
             position: absolute;
             left: 12px;
             top: 50%;
             transform: translateY(-50%);
             color: var(--text-muted);
-            font-size: 14px;
         }
 
-        /* Layout */
-        .layout {
-            display: flex;
-            margin-top: 64px;
-            min-height: calc(100vh - 64px);
-        }
-
-        /* Sidebar */
-        .sidebar {
+        /* Tabs */
+        .tabs-container {
             position: fixed;
-            top: 64px;
+            top: 65px;
             left: 0;
-            width: var(--sidebar-width);
-            height: calc(100vh - 64px);
-            background: var(--bg-secondary);
-            border-right: 1px solid var(--border);
-            padding: 24px 16px;
-            overflow-y: auto;
-            z-index: 50;
+            right: 0;
+            z-index: 99;
+            background: var(--bg-primary);
+            border-bottom: 1px solid var(--border);
         }
 
-        .sidebar-title {
-            font-size: 12px;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            color: var(--text-muted);
-            margin-bottom: 12px;
-            padding: 0 12px;
-        }
-
-        .category-list {
-            list-style: none;
+        .tabs {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
             display: flex;
-            flex-direction: column;
-            gap: 4px;
+            gap: 0;
         }
 
-        .category-item {
-            padding: 10px 12px;
-            border-radius: 8px;
-            cursor: pointer;
-            font-size: 14px;
+        .tab {
+            padding: 14px 24px;
+            font-size: 15px;
             font-weight: 500;
             color: var(--text-secondary);
+            cursor: pointer;
+            border-bottom: 2px solid transparent;
             transition: all 0.2s;
-            display: flex;
-            align-items: center;
-            gap: 10px;
+            white-space: nowrap;
         }
 
-        .category-item:hover {
-            background: var(--bg-card);
+        .tab:hover {
             color: var(--text-primary);
         }
 
-        .category-item.active {
-            background: var(--brand-glow);
+        .tab.active {
             color: var(--brand);
+            border-bottom-color: var(--brand);
         }
 
-        .category-item .cat-icon {
-            font-size: 16px;
-            width: 24px;
-            text-align: center;
+        /* Main */
+        .main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 140px 24px 60px;
         }
 
-        .category-item .cat-count {
-            margin-left: auto;
-            font-size: 12px;
-            background: var(--bg-primary);
-            padding: 2px 8px;
-            border-radius: 10px;
-            color: var(--text-muted);
-        }
-
-        .category-item.active .cat-count {
-            background: rgba(241, 117, 45, 0.2);
-            color: var(--brand);
-        }
-
-        /* Main Content */
-        .main-content {
-            margin-left: var(--sidebar-width);
-            flex: 1;
-            padding: 32px;
-        }
-
-        .content-header {
-            margin-bottom: 28px;
-        }
-
-        .content-header h2 {
-            font-size: 24px;
+        .section-title {
+            font-size: 28px;
             font-weight: 700;
             margin-bottom: 8px;
         }
 
-        .content-header p {
-            font-size: 14px;
+        .section-desc {
+            font-size: 15px;
             color: var(--text-secondary);
+            margin-bottom: 32px;
         }
 
-        /* Cards Grid */
-        .cards-grid {
+        /* Grid */
+        .grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 20px;
         }
 
-        .card {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            padding: 24px;
-            transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-            display: flex;
-            flex-direction: column;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 2px;
-            background: var(--brand);
-            opacity: 0;
-            transition: opacity 0.3s;
-        }
-
-        .card:hover {
-            background: var(--bg-card-hover);
-            border-color: var(--border-hover);
-            transform: translateY(-4px);
-            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4), 0 0 0 1px var(--border-hover);
-        }
-
-        .card:hover::before {
-            opacity: 1;
-        }
-
-        .card-category {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            font-size: 12px;
-            font-weight: 500;
-            color: var(--brand);
-            background: var(--brand-glow);
-            padding: 4px 10px;
-            border-radius: 6px;
-            margin-bottom: 14px;
-            width: fit-content;
-        }
-
-        .card-title {
-            font-size: 16px;
-            font-weight: 600;
-            margin-bottom: 10px;
-            line-height: 1.4;
-            color: var(--text-primary);
-        }
-
-        .card-desc {
-            font-size: 13px;
-            color: var(--text-secondary);
-            line-height: 1.6;
-            margin-bottom: 16px;
-            display: -webkit-box;
-            -webkit-line-clamp: 2;
-            -webkit-box-orient: vertical;
-            overflow: hidden;
-        }
-
-        /* Accordion - How To */
-        .card-howto {
-            margin-bottom: 14px;
-        }
-
-        .howto-toggle {
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            font-size: 12px;
-            font-weight: 500;
-            color: var(--brand);
-            cursor: pointer;
-            padding: 6px 0;
-            user-select: none;
-            transition: opacity 0.2s;
-        }
-
-        .howto-toggle:hover {
-            opacity: 0.8;
-        }
-
-        .howto-toggle .arrow {
-            transition: transform 0.2s;
-            font-size: 10px;
-        }
-
-        .howto-toggle.open .arrow {
-            transform: rotate(90deg);
-        }
-
-        .howto-steps {
-            display: none;
-            padding: 10px 0 0 0;
-        }
-
-        .howto-steps.open {
-            display: block;
-        }
-
-        .howto-step {
-            display: flex;
-            gap: 10px;
-            margin-bottom: 8px;
-            font-size: 12px;
-            line-height: 1.5;
-            color: var(--text-secondary);
-        }
-
-        .howto-step:last-child {
-            margin-bottom: 0;
-        }
-
-        .step-num {
-            flex-shrink: 0;
-            width: 18px;
-            height: 18px;
-            background: var(--brand-glow);
-            color: var(--brand);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 10px;
-            font-weight: 600;
-            margin-top: 1px;
-        }
-
-        .card-footer {
-            display: flex;
-            align-items: center;
-            justify-content: flex-end;
-            margin-top: auto;
-            padding-top: 12px;
-            border-top: 1px solid var(--border);
-        }
-
-        .card-user {
-            font-size: 12px;
-            color: var(--text-muted);
-        }
-
-        /* Responsive */
-        @media (max-width: 1200px) {
-            .cards-grid {
+        @media (max-width: 900px) {
+            .grid {
                 grid-template-columns: repeat(2, 1fr);
             }
         }
 
-        @media (max-width: 900px) {
-            .sidebar {
-                display: none;
-            }
-            .main-content {
-                margin-left: 0;
-            }
-            .mobile-filter {
-                display: flex !important;
-            }
-        }
-
-        @media (max-width: 640px) {
-            .cards-grid {
+        @media (max-width: 600px) {
+            .grid {
                 grid-template-columns: 1fr;
             }
-            .top-banner {
-                padding: 0 16px;
+            .header-inner {
+                flex-wrap: wrap;
             }
-            .banner-stats {
-                display: none;
+            .search-box {
+                order: 3;
+                max-width: 100%;
+                width: 100%;
             }
-            .search-input {
-                width: 160px;
+            .tabs {
+                overflow-x: auto;
             }
-            .main-content {
-                padding: 20px 16px;
+            .tab {
+                padding: 12px 16px;
+                font-size: 14px;
             }
         }
 
-        /* Mobile Filter Bar */
-        .mobile-filter {
-            display: none;
-            gap: 8px;
-            padding: 16px 0;
-            overflow-x: auto;
-            -webkit-overflow-scrolling: touch;
-            scrollbar-width: none;
+        /* Cards - Ten Things */
+        .card-ten {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 24px;
+            transition: all 0.25s ease;
+            cursor: default;
         }
 
-        .mobile-filter::-webkit-scrollbar {
-            display: none;
+        .card-ten:hover {
+            background: var(--bg-card-hover);
+            border-color: var(--border-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
         }
 
-        .mobile-filter-btn {
-            flex-shrink: 0;
-            padding: 8px 16px;
-            border-radius: 20px;
+        .card-ten-header {
+            display: flex;
+            align-items: flex-start;
+            gap: 14px;
+            margin-bottom: 10px;
+        }
+
+        .card-number {
+            font-size: 32px;
+            font-weight: 700;
+            color: var(--brand);
+            line-height: 1;
+            opacity: 0.8;
+            min-width: 40px;
+        }
+
+        .card-ten-title {
+            font-size: 17px;
+            font-weight: 600;
+            line-height: 1.4;
+        }
+
+        .card-ten-desc {
+            font-size: 14px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: 14px;
+        }
+
+        /* Accordion */
+        .accordion-toggle {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
             font-size: 13px;
             font-weight: 500;
-            background: var(--bg-card);
-            color: var(--text-secondary);
-            border: 1px solid var(--border);
-            cursor: pointer;
-            transition: all 0.2s;
-            white-space: nowrap;
-        }
-
-        .mobile-filter-btn.active {
-            background: var(--brand-glow);
             color: var(--brand);
-            border-color: var(--brand);
+            cursor: pointer;
+            padding: 6px 12px;
+            border-radius: 6px;
+            background: var(--brand-glow);
+            border: none;
+            font-family: inherit;
+            transition: background 0.2s;
         }
 
-        /* Animations */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(16px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+        .accordion-toggle:hover {
+            background: rgba(241, 117, 45, 0.25);
         }
 
-        .card {
-            animation: fadeInUp 0.4s ease forwards;
-            opacity: 0;
+        .accordion-toggle svg {
+            transition: transform 0.2s;
         }
 
-        .card:nth-child(1) { animation-delay: 0.05s; }
-        .card:nth-child(2) { animation-delay: 0.1s; }
-        .card:nth-child(3) { animation-delay: 0.15s; }
-        .card:nth-child(4) { animation-delay: 0.2s; }
-        .card:nth-child(5) { animation-delay: 0.25s; }
-        .card:nth-child(6) { animation-delay: 0.3s; }
-        .card:nth-child(7) { animation-delay: 0.35s; }
-        .card:nth-child(8) { animation-delay: 0.4s; }
-        .card:nth-child(9) { animation-delay: 0.45s; }
-        .card:nth-child(10) { animation-delay: 0.5s; }
+        .accordion-toggle.open svg {
+            transform: rotate(180deg);
+        }
 
-        .card.hidden {
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+
+        .accordion-content.open {
+            max-height: 500px;
+        }
+
+        .accordion-steps {
+            padding: 14px 0 0;
+            list-style: none;
+            counter-reset: step;
+        }
+
+        .accordion-steps li {
+            position: relative;
+            padding: 8px 0 8px 28px;
+            font-size: 13px;
+            color: var(--text-secondary);
+            line-height: 1.5;
+        }
+
+        .accordion-steps li::before {
+            counter-increment: step;
+            content: counter(step);
+            position: absolute;
+            left: 0;
+            top: 8px;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: var(--border);
+            color: var(--text-primary);
+            font-size: 11px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Cards - Industry & Feature */
+        .card-general {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 24px;
+            transition: all 0.25s ease;
+            cursor: default;
+        }
+
+        .card-general:hover {
+            background: var(--bg-card-hover);
+            border-color: var(--border-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+        }
+
+        .card-general-icon {
+            font-size: 32px;
+            margin-bottom: 14px;
+        }
+
+        .card-general-title {
+            font-size: 17px;
+            font-weight: 600;
+            margin-bottom: 8px;
+            line-height: 1.4;
+        }
+
+        .card-general-desc {
+            font-size: 14px;
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+
+        /* Tab content visibility */
+        .tab-content {
             display: none;
         }
 
-        /* Scrollbar */
-        ::-webkit-scrollbar {
-            width: 6px;
-        }
-        ::-webkit-scrollbar-track {
-            background: transparent;
-        }
-        ::-webkit-scrollbar-thumb {
-            background: var(--border);
-            border-radius: 3px;
-        }
-        ::-webkit-scrollbar-thumb:hover {
-            background: var(--text-muted);
+        .tab-content.active {
+            display: block;
         }
 
+        /* No results */
         .no-results {
-            grid-column: 1 / -1;
             text-align: center;
-            padding: 60px 20px;
+            padding: 80px 20px;
             color: var(--text-muted);
             font-size: 15px;
+            display: none;
         }
 
-        .no-results .emoji {
-            font-size: 48px;
-            margin-bottom: 16px;
+        .no-results.visible {
             display: block;
         }
     </style>
 </head>
 <body>
-    <!-- Top Banner -->
-    <header class="top-banner">
-        <div class="banner-logo">
-            <div class="logo-icon">C</div>
-            <h1>Cola Use Cases</h1>
-        </div>
-        <div class="banner-stats">
-            <div class="stat">
-                <span class="stat-number">10</span> 个案例
+    <header class="header">
+        <div class="header-inner">
+            <div class="logo"><span>Cola</span> Use Cases</div>
+            <div class="search-box">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+                <input type="text" id="searchInput" placeholder="搜索案例...">
             </div>
-            <div class="stat">
-                <span class="stat-number">3</span> 个分类
-            </div>
-            <div class="stat">Built with <span class="stat-number">Cola</span></div>
-        </div>
-        <div class="search-container">
-            <span class="search-icon">🔍</span>
-            <input type="text" class="search-input" placeholder="搜索案例..." id="searchInput">
         </div>
     </header>
 
-    <div class="layout">
-        <!-- Sidebar -->
-        <aside class="sidebar">
-            <div class="sidebar-title">分类</div>
-            <ul class="category-list">
-                <li class="category-item active" data-category="all">
-                    <span class="cat-icon">✦</span>
-                    <span>全部</span>
-                    <span class="cat-count">10</span>
-                </li>
-                <li class="category-item" data-category="efficiency">
-                    <span class="cat-icon">⚡</span>
-                    <span>效率</span>
-                    <span class="cat-count">5</span>
-                </li>
-                <li class="category-item" data-category="creation">
-                    <span class="cat-icon">🎬</span>
-                    <span>创作</span>
-                    <span class="cat-count">3</span>
-                </li>
-                <li class="category-item" data-category="life">
-                    <span class="cat-icon">🎵</span>
-                    <span>生活</span>
-                    <span class="cat-count">2</span>
-                </li>
-            </ul>
-        </aside>
+    <nav class="tabs-container">
+        <div class="tabs">
+            <div class="tab active" data-tab="ten-things">十件小事</div>
+            <div class="tab" data-tab="industry">行业案例</div>
+            <div class="tab" data-tab="feature">功能案例</div>
+        </div>
+    </nav>
 
-        <!-- Main Content -->
-        <main class="main-content">
-            <!-- Mobile Filter -->
-            <div class="mobile-filter">
-                <button class="mobile-filter-btn active" data-category="all">✦ 全部</button>
-                <button class="mobile-filter-btn" data-category="efficiency">⚡ 效率</button>
-                <button class="mobile-filter-btn" data-category="creation">🎬 创作</button>
-                <button class="mobile-filter-btn" data-category="life">🎵 生活</button>
-            </div>
-
-            <div class="content-header">
-                <h2 id="contentTitle">全部案例</h2>
-                <p id="contentDesc">探索 Cola 在效率、创作和生活中的真实使用场景</p>
-            </div>
-
-            <div class="cards-grid" id="cardsGrid">
-                <!-- Cards injected by JS -->
-            </div>
-        </main>
-    </div>
-
-    <script>
-        const cases = [
-            // ⚡ 效率
-            {
-                title: "一句话归档散落文件",
-                desc: "识别已有文件夹结构，只整理散落文件，按类型自动归档，原有结构完整保留。",
-                category: "efficiency",
-                categoryLabel: "⚡ 效率",
-                user: "Loki",
-                steps: [
-                    "打开Cola，说"帮我整理一下Downloads文件夹"",
-                    "Cola会先扫描你的文件结构，识别已有的手动文件夹",
-                    "她只动散落的文件——按类型（图片/视频/文档/压缩包）自动建子文件夹",
-                    "完成后告诉你整理了多少个文件、怎么分类的"
-                ]
-            },
-            {
-                title: "五分钟搭建个人网站",
-                desc: "从审美调研到方案选型到代码生成到部署上线，全链路搞定，你不需要写一行代码。",
-                category: "efficiency",
-                categoryLabel: "⚡ 效率",
-                user: "Esther",
-                steps: [
-                    "跟Cola说"帮我搭一个个人网站"，告诉她你想要什么风格",
-                    "Cola会先去研究审美好的网站，给你一份调研报告",
-                    "你选好风格方向后，她会生成多个方案让你挑",
-                    "选定后根据你的反馈微调细节（配色/间距/动效）",
-                    "最后Cola把网站部署上线"
-                ]
-            },
-            {
-                title: "整理对比大模型定价",
-                desc: "多家官网自动抓取定价，自动校核纠错，生成横向对比表。",
-                category: "efficiency",
-                categoryLabel: "⚡ 效率",
-                user: "云舒",
-                steps: [
-                    "跟Cola说"帮我查下XX的API定价"",
-                    "她会自己打开官网抓取信息，你可以追加"YY和ZZ也查一下"",
-                    "查完后说"数据校核一下"，Cola会回去逐个验证并修正错误",
-                    "说"写成文档/做个对比表"，她会生成排好版的横向对比"
-                ]
-            },
-            {
-                title: "自动填写申请表单",
-                desc: "同时调用记忆中的信息、搜索本地文件、查询网页，一句话填完整张表。",
-                category: "efficiency",
-                categoryLabel: "⚡ 效率",
-                user: "Orange",
-                steps: [
-                    "打开需要填写的表单页面",
-                    "跟Cola说"帮我填写这张表"",
-                    "Cola会从你之前告诉她的信息、电脑里的文件（如营业执照）、网上的公开信息同时取用",
-                    "她会填完后让你确认，你检查一遍提交即可"
-                ]
-            },
-            {
-                title: "读完笔记搭管理系统",
-                desc: "读了你的笔记结构，理解你的工作方式，量身定制个人管理看板。",
-                category: "efficiency",
-                categoryLabel: "⚡ 效率",
-                user: "塔塔",
-                steps: [
-                    "跟Cola说"读一下我Obsidian/笔记里的文件结构"",
-                    "Cola分析完后会告诉你她理解的你的分类方式",
-                    "说"帮我搭一个适合我的管理看板"",
-                    "她会根据你的实际内容生成定制化的看板网站"
-                ]
-            },
-            // 🎬 创作
-            {
-                title: "一句话直出MV",
-                desc: "根据歌词写画面提示词、生成插画、变动态视频、叠加歌词字幕、合成音频，交付完整MV。",
-                category: "creation",
-                categoryLabel: "🎬 创作",
-                user: "淳子",
-                steps: [
-                    "准备好一首歌（音频文件或歌词）",
-                    "跟Cola说"帮我做一条MV，风格是XX"（比如动森、吉卜力、赛博朋克）",
-                    "Cola会自动完成：写画面描述→生成图片→转视频→加字幕→合成",
-                    "如果你有精确的歌词时间码，补充给她效果更好",
-                    "收到成片，调整不满意的部分"
-                ]
-            },
-            {
-                title: "AI写分镜拍短片",
-                desc: "Cola自己写分镜脚本（含运镜、光影、情绪），生成视频片段并拼接成完整短片。",
-                category: "creation",
-                categoryLabel: "🎬 创作",
-                user: "Loki",
-                steps: [
-                    "跟Cola说"帮我用AI生成一段短片，主题是XX"",
-                    "Cola会先写出分镜脚本（每个镜头的运镜、画面、情绪）",
-                    "你确认或调整分镜",
-                    "她逐个镜头生成视频，最后拼接+配乐交付"
-                ]
-            },
-            {
-                title: "做完一次，打包成技能",
-                desc: "把任何你和Cola跑通的工作流程打包成Skill，下次一句话触发。",
-                category: "creation",
-                categoryLabel: "🎬 创作",
-                user: "Loki",
-                steps: [
-                    "先和Cola完成一次完整流程（比如做视频、写报告、整理数据）",
-                    "说"帮我把刚才的流程打包成一个Skill"",
-                    "Cola会整理步骤、清理个人配置、确保通用性",
-                    "下次只需要一句话就能触发整套流程"
-                ]
-            },
-            // 🎵 生活
-            {
-                title: "说句放首歌，网易云就响了",
-                desc: "从安装到登录到播放全搞定，搜索、暂停、下一首、心动模式，一句话控制。",
-                category: "life",
-                categoryLabel: "🎵 生活",
-                user: "Loki",
-                steps: [
-                    "跟Cola说"帮我接一下网易云音乐"",
-                    "Cola会自动安装需要的工具，引导你扫码登录",
-                    "登录后直接说歌名，她帮你搜索播放",
-                    "之后随时说"下一首""暂停""放个每日推荐""
-                ]
-            },
-            {
-                title: "零代码搭建照片共享平台",
-                desc: "黑客松摄影师用Cola搓了个照片共享网站，直接上线。",
-                category: "life",
-                categoryLabel: "🎵 生活",
-                user: "用户",
-                steps: [
-                    "跟Cola说"帮我做一个照片共享网站"，描述你想要的功能",
-                    "Cola会设计结构、写代码、搭好前端",
-                    "你上传照片或接入相册",
-                    "Cola部署上线，拿到链接直接分享"
-                ]
-            }
-        ];
-
-        const categoryDescriptions = {
-            all: "探索 Cola 在效率、创作和生活中的真实使用场景",
-            efficiency: "省掉重复劳动，把时间还给重要的事",
-            creation: "从分镜到成片、从灵感到技能",
-            life: "让 Cola 融入日常"
-        };
-
-        const categoryTitles = {
-            all: "全部案例",
-            efficiency: "⚡ 效率",
-            creation: "🎬 创作",
-            life: "🎵 生活"
-        };
-
-        let currentCategory = 'all';
-        let searchQuery = '';
-
-        function renderCards() {
-            const grid = document.getElementById('cardsGrid');
-            const filtered = cases.filter(c => {
-                const matchCategory = currentCategory === 'all' || c.category === currentCategory;
-                const matchSearch = searchQuery === '' || 
-                    c.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-                    c.desc.toLowerCase().includes(searchQuery.toLowerCase()) ||
-                    c.user.toLowerCase().includes(searchQuery.toLowerCase());
-                return matchCategory && matchSearch;
-            });
-
-            if (filtered.length === 0) {
-                grid.innerHTML = '<div class="no-results"><span class="emoji">🔍</span>没有找到匹配的案例</div>';
-                return;
-            }
-
-            grid.innerHTML = filtered.map((c, i) => `
-                <div class="card" style="animation-delay: ${i * 0.05}s">
-                    <div class="card-category">${c.categoryLabel}</div>
-                    <div class="card-title">${c.title}</div>
-                    <div class="card-desc">${c.desc}</div>
-                    <div class="card-howto">
-                        <div class="howto-toggle" onclick="toggleHowto(this)">
-                            <span class="arrow">▶</span>
-                            <span>怎么做</span>
-                        </div>
-                        <div class="howto-steps">
-                            ${c.steps.map((step, si) => `
-                                <div class="howto-step">
-                                    <span class="step-num">${si + 1}</span>
-                                    <span>${step}</span>
-                                </div>
-                            `).join('')}
-                        </div>
+    <main class="main">
+        <!-- 十件小事 -->
+        <div class="tab-content active" id="ten-things">
+            <h1 class="section-title">初次遇见Cola的十件小事</h1>
+            <p class="section-desc">新用户最容易上手、马上能试的日常小事</p>
+            <div class="grid" id="grid-ten">
+                <!-- 1 -->
+                <div class="card-ten" data-keywords="整理 桌面 文件 归档 截图 PDF 安装包">
+                    <div class="card-ten-header">
+                        <div class="card-number">01</div>
+                        <div class="card-ten-title">整理一下桌面</div>
                     </div>
-                    <div class="card-footer">
-                        <div class="card-user">by ${c.user}</div>
+                    <div class="card-ten-desc">桌面堆满了截图、PDF、安装包？让Cola按类型帮你归档。</div>
+                    <button class="accordion-toggle" onclick="toggleAccordion(this)">
+                        怎么做
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+                    </button>
+                    <div class="accordion-content">
+                        <ol class="accordion-steps">
+                            <li>跟Cola说"帮我整理一下桌面"</li>
+                            <li>Cola会先扫描有哪些文件，告诉你她打算怎么分类</li>
+                            <li>你确认后她自动归档——图片、文档、安装包各归各位</li>
+                            <li>原有的文件夹不会动</li>
+                        </ol>
                     </div>
                 </div>
-            `).join('');
+                <!-- 2 -->
+                <div class="card-ten" data-keywords="查 对比 对比表 产品 服务 方案 差异 价格 云服务">
+                    <div class="card-ten-header">
+                        <div class="card-number">02</div>
+                        <div class="card-ten-title">帮我查个东西，做个对比表</div>
+                    </div>
+                    <div class="card-ten-desc">想对比几个产品/服务/方案的差异？说一句Cola就去查，还会自己纠错。</div>
+                    <button class="accordion-toggle" onclick="toggleAccordion(this)">
+                        怎么做
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+                    </button>
+                    <div class="accordion-content">
+                        <ol class="accordion-steps">
+                            <li>跟Cola说"帮我查一下XX和YY的区别"（比如几家云服务的价格）</li>
+                            <li>Cola自己去官网抓信息</li>
+                            <li>查完说"做个对比表"，她直接生成整理好的表格</li>
+                            <li>如果不放心，说"校核一下"，她会回去验证</li>
+                        </ol>
+                    </div>
+                </div>
+                <!-- 3 -->
+                <div class="card-ten" data-keywords="音乐 歌 播放 网易云 下一首 暂停 心动模式 每日推荐">
+                    <div class="card-ten-header">
+                        <div class="card-number">03</div>
+                        <div class="card-ten-title">放首歌</div>
+                    </div>
+                    <div class="card-ten-desc">Cola接入网易云音乐后，说歌名就播，下一首、暂停、心动模式全一句话搞定。</div>
+                    <button class="accordion-toggle" onclick="toggleAccordion(this)">
+                        怎么做
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+                    </button>
+                    <div class="accordion-content">
+                        <ol class="accordion-steps">
+                            <li>跟Cola说"帮我接一下网易云音乐"</li>
+                            <li>Cola装好工具后引导你扫码登录</li>
+                            <li>之后随时说"放首XX"就播放</li>
+                            <li>"下一首""暂停""每日推荐"都可以</li>
+                        </ol>
+                    </div>
+                </div>
+                <!-- 4 -->
+                <div class="card-ten" data-keywords="邮件 写邮件 email 语气 发送">
+                    <div class="card-ten-header">
+                        <div class="card-number">04</div>
+                        <div class="card-ten-title">帮我写封邮件</div>
+                    </div>
+                    <div class="card-ten-desc">说清楚写给谁、关于什么，Cola帮你拟好，调调语气就能发。</div>
+                    <button class="accordion-toggle" onclick="toggleAccordion(this)">
+                        怎么做
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+                    </button>
+                    <div class="accordion-content">
+                        <ol class="accordion-steps">
+                            <li>跟Cola说"帮我写封邮件给XX，关于YY"</li>
+                            <li>补充一些关键信息或你想表达的意思</li>
+                            <li>Cola会拟一版，你看看语气和内容</li>
+                            <li>调整满意后复制发送</li>
+                        </ol>
+                    </div>
+                </div>
+                <!-- 5 -->
+                <div class="card-ten" data-keywords="日历 日程 安排 待办 提醒 今天">
+                    <div class="card-ten-header">
+                        <div class="card-number">05</div>
+                        <div class="card-ten-title">今天有什么安排</div>
+                    </div>
+                    <div class="card-ten-desc">Cola帮你看日历、整理待办、提醒你接下来要做的事。</div>
+                    <button class="accordion-toggle" onclick="toggleAccordion(this)">
+                        怎么做
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+                    </button>
+                    <div class="accordion-content">
+                        <ol class="accordion-steps">
+                            <li>跟Cola说"帮我看看今天有什么安排"</li>
+                            <li>Cola读取你的日历和提醒事项</li>
+                            <li>给你一份清晰的今日概览</li>
+                            <li>你可以追加"帮我把XX加到日程里"</li>
+                        </ol>
+                    </div>
+                </div>
+                <!-- 6 -->
+                <div class="card-ten" data-keywords="PPT 大纲 演示 幻灯片 结构 受众">
+                    <div class="card-ten-header">
+                        <div class="card-number">06</div>
+                        <div class="card-ten-title">帮我做个PPT大纲</div>
+                    </div>
+                    <div class="card-ten-desc">说清楚主题和受众，Cola帮你拉出结构，你再往里填内容。</div>
+                    <button class="accordion-toggle" onclick="toggleAccordion(this)">
+                        怎么做
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+                    </button>
+                    <div class="accordion-content">
+                        <ol class="accordion-steps">
+                            <li>跟Cola说"帮我做个PPT大纲，主题是XX，给YY看的"</li>
+                            <li>Cola会问几个关键问题（时长、重点、受众背景）</li>
+                            <li>她拉出一份结构化大纲</li>
+                            <li>你可以说"第三部分展开一下""加个案例"来调整</li>
+                        </ol>
+                    </div>
+                </div>
+                <!-- 7 -->
+                <div class="card-ten" data-keywords="总结 文档 PDF 要点 提炼 摘要">
+                    <div class="card-ten-header">
+                        <div class="card-number">07</div>
+                        <div class="card-ten-title">帮我总结这个文档</div>
+                    </div>
+                    <div class="card-ten-desc">把一份长文档/PDF丢给Cola，她给你提炼要点。</div>
+                    <button class="accordion-toggle" onclick="toggleAccordion(this)">
+                        怎么做
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+                    </button>
+                    <div class="accordion-content">
+                        <ol class="accordion-steps">
+                            <li>把文件拖进Cola对话窗口</li>
+                            <li>说"帮我总结一下重点"</li>
+                            <li>Cola会按结构提炼关键信息</li>
+                            <li>你可以追问"第二章具体说了什么"</li>
+                        </ol>
+                    </div>
+                </div>
+                <!-- 8 -->
+                <div class="card-ten" data-keywords="网页 网站 主页 活动页 展示页 部署 上线 代码">
+                    <div class="card-ten-header">
+                        <div class="card-number">08</div>
+                        <div class="card-ten-title">搭一个简单网页</div>
+                    </div>
+                    <div class="card-ten-desc">想做个人主页/活动页/展示页？跟Cola说想要什么感觉就行。</div>
+                    <button class="accordion-toggle" onclick="toggleAccordion(this)">
+                        怎么做
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+                    </button>
+                    <div class="accordion-content">
+                        <ol class="accordion-steps">
+                            <li>跟Cola说"帮我搭一个XX页面"（个人主页/活动邀请页/产品展示页）</li>
+                            <li>描述你想要的风格和内容</li>
+                            <li>Cola生成代码并预览给你看</li>
+                            <li>调整满意后她直接部署上线</li>
+                        </ol>
+                    </div>
+                </div>
+                <!-- 9 -->
+                <div class="card-ten" data-keywords="选题 标题 灵感 头脑风暴 文章 内容">
+                    <div class="card-ten-header">
+                        <div class="card-number">09</div>
+                        <div class="card-ten-title">帮我想个选题/起个标题</div>
+                    </div>
+                    <div class="card-ten-desc">写文章/发帖没灵感？Cola帮你头脑风暴，给方向不给废话。</div>
+                    <button class="accordion-toggle" onclick="toggleAccordion(this)">
+                        怎么做
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+                    </button>
+                    <div class="accordion-content">
+                        <ol class="accordion-steps">
+                            <li>跟Cola说"帮我想几个选题"或"帮我起个标题"</li>
+                            <li>告诉她面向谁、什么平台、大概什么方向</li>
+                            <li>Cola给出几个方向+理由</li>
+                            <li>你挑一个说"就这个，展开一下"</li>
+                        </ol>
+                    </div>
+                </div>
+                <!-- 10 -->
+                <div class="card-ten" data-keywords="填表 表单 申请 注册 报销 自动填充">
+                    <div class="card-ten-header">
+                        <div class="card-number">10</div>
+                        <div class="card-ten-title">帮我填个表</div>
+                    </div>
+                    <div class="card-ten-desc">申请表、注册表、报销单——Cola能从你之前的信息里自动填，不用重复输入。</div>
+                    <button class="accordion-toggle" onclick="toggleAccordion(this)">
+                        怎么做
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+                    </button>
+                    <div class="accordion-content">
+                        <ol class="accordion-steps">
+                            <li>打开要填的表单</li>
+                            <li>跟Cola说"帮我填写这张表"</li>
+                            <li>Cola从你之前告诉她的信息+本地文件里提取</li>
+                            <li>她填完让你确认，你检查一下提交</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 行业案例 -->
+        <div class="tab-content" id="industry">
+            <h1 class="section-title">行业案例</h1>
+            <p class="section-desc">按用户角色和行业，看Cola怎么帮到你</p>
+            <div class="grid" id="grid-industry">
+                <div class="card-general" data-keywords="自媒体 内容 创作者 KOL 选题 写作 排版 发布 工作流 SOP">
+                    <div class="card-general-icon">✍️</div>
+                    <div class="card-general-title">用Cola管理内容工作流</div>
+                    <div class="card-general-desc">选题→写作→排版→发布，全流程用Cola协作。KOL用Cola搭建内容SOP，教客户直接用。</div>
+                </div>
+                <div class="card-general" data-keywords="创业者 CEO 小公司 Stripe 竞品 调研 商业 文档 参谋">
+                    <div class="card-general-icon">🚀</div>
+                    <div class="card-general-title">从填表到战略，Cola是我的参谋</div>
+                    <div class="card-general-desc">Stripe申请表一句话填完、竞品调研自动跑、商业文档一起写。写代码之外的80%都交给她。</div>
+                </div>
+                <div class="card-general" data-keywords="自由职业 freelancer OPC 方案 设计 SOP 客户 助理">
+                    <div class="card-general-icon">💼</div>
+                    <div class="card-general-title">一个人也能像一支队伍</div>
+                    <div class="card-general-desc">写方案、做设计、整理SOP、管客户信息——以前需要助理做的事，现在Cola做。</div>
+                </div>
+                <div class="card-general" data-keywords="企业 团队 旅行社 SOP 员工 新人 工作流程">
+                    <div class="card-general-icon">🏢</div>
+                    <div class="card-general-title">把SOP教给Cola，让员工用</div>
+                    <div class="card-general-desc">旅行社用Cola整理客户信息、生成攻略；团队把工作流程教给Cola，新人直接上手。</div>
+                </div>
+                <div class="card-general" data-keywords="学生 求职 简历 面试 演讲 行业信息">
+                    <div class="card-general-icon">🎓</div>
+                    <div class="card-general-title">从简历到面试，Cola帮我准备</div>
+                    <div class="card-general-desc">改简历、模拟面试、整理行业信息、准备演讲——节省3小时起。</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 功能案例 -->
+        <div class="tab-content" id="feature">
+            <h1 class="section-title">功能案例</h1>
+            <p class="section-desc">按Cola核心能力分类，看看她都能做什么</p>
+            <div class="grid" id="grid-feature">
+                <div class="card-general" data-keywords="文件 管理 整理 归档 桌面 Downloads 分类">
+                    <div class="card-general-icon">📁</div>
+                    <div class="card-general-title">267个文件，一句话归档</div>
+                    <div class="card-general-desc">识别已有结构、只动散落文件、按类型分类。桌面和Downloads从此不再是垃圾场。</div>
+                </div>
+                <div class="card-general" data-keywords="网页 搭建 部署 个人主页 照片 平台 零代码 上线">
+                    <div class="card-general-icon">🌐</div>
+                    <div class="card-general-title">从个人主页到照片平台，零代码上线</div>
+                    <div class="card-general-desc">告诉Cola想做什么网站，她调研审美→生成代码→部署上线。完全不用写代码。</div>
+                </div>
+                <div class="card-general" data-keywords="内容 创作 分镜 拍摄 剪辑 MV 视频 歌词 海报 文案">
+                    <div class="card-general-icon">🎬</div>
+                    <div class="card-general-title">分镜→拍摄→剪辑→MV，一条龙</div>
+                    <div class="card-general-desc">Cola自己写分镜脚本，生成视频，配乐合成。也能写歌词、做海报、出文案。</div>
+                </div>
+                <div class="card-general" data-keywords="信息 调研 分析 多源 纠错 报告 公司 产品 行业">
+                    <div class="card-general-icon">🔍</div>
+                    <div class="card-general-title">多源调研，自动纠错，直出报告</div>
+                    <div class="card-general-desc">让Cola去查几家公司/产品/行业信息，她自己跑、自己验、自己排版。</div>
+                </div>
+                <div class="card-general" data-keywords="日程 任务 管理 日历 提醒 安排">
+                    <div class="card-general-icon">📅</div>
+                    <div class="card-general-title">说一句就加进日程，到点就提醒</div>
+                    <div class="card-general-desc">Cola接入你的日历和提醒事项，帮你看安排、加日程、设提醒。</div>
+                </div>
+                <div class="card-general" data-keywords="工作流 自动化 技能 Skill 视频制作 报告 数据 一键">
+                    <div class="card-general-icon">⚡</div>
+                    <div class="card-general-title">做完一次，打包成技能，下次一句话触发</div>
+                    <div class="card-general-desc">把任何跑通的流程固化成Skill——视频制作、报告生成、数据整理，一键复现。</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="no-results" id="noResults">没有找到匹配的案例</div>
+    </main>
+
+    <script>
+        // Tab switching
+        const tabs = document.querySelectorAll('.tab');
+        const tabContents = document.querySelectorAll('.tab-content');
+
+        tabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                const target = tab.dataset.tab;
+                tabs.forEach(t => t.classList.remove('active'));
+                tab.classList.add('active');
+                tabContents.forEach(tc => tc.classList.remove('active'));
+                document.getElementById(target).classList.add('active');
+                // Clear search when switching tabs
+                document.getElementById('searchInput').value = '';
+                filterCards('');
+            });
+        });
+
+        // Accordion
+        function toggleAccordion(btn) {
+            const content = btn.nextElementSibling;
+            btn.classList.toggle('open');
+            content.classList.toggle('open');
         }
 
-        function toggleHowto(el) {
-            el.classList.toggle('open');
-            const steps = el.nextElementSibling;
-            steps.classList.toggle('open');
-        }
+        // Search
+        const searchInput = document.getElementById('searchInput');
+        searchInput.addEventListener('input', (e) => {
+            filterCards(e.target.value.trim().toLowerCase());
+        });
 
-        function setCategory(category) {
-            currentCategory = category;
-            
-            // Update sidebar
-            document.querySelectorAll('.category-item').forEach(el => {
-                el.classList.toggle('active', el.dataset.category === category);
+        function filterCards(query) {
+            const noResults = document.getElementById('noResults');
+            let hasVisible = false;
+
+            // Filter in all tab contents
+            tabContents.forEach(tc => {
+                const cards = tc.querySelectorAll('.card-ten, .card-general');
+                let sectionHasVisible = false;
+                cards.forEach(card => {
+                    const keywords = (card.dataset.keywords || '').toLowerCase();
+                    const title = card.querySelector('.card-ten-title, .card-general-title');
+                    const titleText = title ? title.textContent.toLowerCase() : '';
+                    const desc = card.querySelector('.card-ten-desc, .card-general-desc');
+                    const descText = desc ? desc.textContent.toLowerCase() : '';
+                    const match = !query || keywords.includes(query) || titleText.includes(query) || descText.includes(query);
+                    card.style.display = match ? '' : 'none';
+                    if (match) {
+                        sectionHasVisible = true;
+                        hasVisible = true;
+                    }
+                });
             });
 
-            // Update mobile filter
-            document.querySelectorAll('.mobile-filter-btn').forEach(el => {
-                el.classList.toggle('active', el.dataset.category === category);
+            // Show active tab's content, check if it has visible items
+            const activeContent = document.querySelector('.tab-content.active');
+            const activeCards = activeContent.querySelectorAll('.card-ten, .card-general');
+            let activeHasVisible = false;
+            activeCards.forEach(card => {
+                if (card.style.display !== 'none') activeHasVisible = true;
             });
 
-            // Update header
-            document.getElementById('contentTitle').textContent = categoryTitles[category];
-            document.getElementById('contentDesc').textContent = categoryDescriptions[category];
-
-            renderCards();
+            noResults.classList.toggle('visible', query && !activeHasVisible);
         }
-
-        // Event listeners
-        document.querySelectorAll('.category-item').forEach(el => {
-            el.addEventListener('click', () => setCategory(el.dataset.category));
-        });
-
-        document.querySelectorAll('.mobile-filter-btn').forEach(el => {
-            el.addEventListener('click', () => setCategory(el.dataset.category));
-        });
-
-        document.getElementById('searchInput').addEventListener('input', (e) => {
-            searchQuery = e.target.value;
-            renderCards();
-        });
-
-        // Initial render
-        renderCards();
     </script>
 </body>
 </html>
