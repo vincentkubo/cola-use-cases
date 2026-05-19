@@ -345,6 +345,7 @@
             font-size: 14px;
             color: var(--text-secondary);
             line-height: 1.7;
+            margin-bottom: 14px;
         }
 
         /* Tab content visibility */
@@ -607,26 +608,86 @@
                     <div class="card-general-icon">✍️</div>
                     <div class="card-general-title">用Cola管理内容工作流</div>
                     <div class="card-general-desc">选题→写作→排版→发布，全流程用Cola协作。KOL用Cola搭建内容SOP，教客户直接用。</div>
+                    <button class="accordion-toggle" onclick="toggleAccordion(this)">
+                        怎么做
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+                    </button>
+                    <div class="accordion-content">
+                        <ol class="accordion-steps">
+                            <li>跟Cola说"帮我想几个选题"，告诉她你的账号定位和受众</li>
+                            <li>选定方向后说"帮我写一篇"，Cola出初稿</li>
+                            <li>你改完后说"帮我排版成小红书/公众号格式"</li>
+                            <li>下次说"按上次的风格再来一篇"，Cola记得你的偏好</li>
+                        </ol>
+                    </div>
                 </div>
                 <div class="card-general" data-keywords="创业者 CEO 小公司 Stripe 竞品 调研 商业 文档 参谋">
                     <div class="card-general-icon">🚀</div>
                     <div class="card-general-title">从填表到战略，Cola是我的参谋</div>
                     <div class="card-general-desc">Stripe申请表一句话填完、竞品调研自动跑、商业文档一起写。写代码之外的80%都交给她。</div>
+                    <button class="accordion-toggle" onclick="toggleAccordion(this)">
+                        怎么做
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+                    </button>
+                    <div class="accordion-content">
+                        <ol class="accordion-steps">
+                            <li>需要填表时跟Cola说"帮我填"，她从记忆和本地文件里提取信息</li>
+                            <li>要调研时说"帮我查XX行业/竞品"，Cola自己去跑</li>
+                            <li>写BP或商业文档时把想法丢给她，她帮你结构化</li>
+                            <li>日常杂事（日程、邮件、文档整理）都一句话交给她处理</li>
+                        </ol>
+                    </div>
                 </div>
                 <div class="card-general" data-keywords="自由职业 freelancer OPC 方案 设计 SOP 客户 助理">
                     <div class="card-general-icon">💼</div>
                     <div class="card-general-title">一个人也能像一支队伍</div>
                     <div class="card-general-desc">写方案、做设计、整理SOP、管客户信息——以前需要助理做的事，现在Cola做。</div>
+                    <button class="accordion-toggle" onclick="toggleAccordion(this)">
+                        怎么做
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+                    </button>
+                    <div class="accordion-content">
+                        <ol class="accordion-steps">
+                            <li>把你的工作流程告诉Cola，她帮你整理成SOP</li>
+                            <li>接到新项目时说"帮我写个方案"，描述客户需求</li>
+                            <li>让Cola帮你管客户信息——"帮我整理一下最近的客户沟通记录"</li>
+                            <li>重复性工作打包成Skill，下次一句话触发</li>
+                        </ol>
+                    </div>
                 </div>
                 <div class="card-general" data-keywords="企业 团队 旅行社 SOP 员工 新人 工作流程">
                     <div class="card-general-icon">🏢</div>
                     <div class="card-general-title">把SOP教给Cola，让员工用</div>
                     <div class="card-general-desc">旅行社用Cola整理客户信息、生成攻略；团队把工作流程教给Cola，新人直接上手。</div>
+                    <button class="accordion-toggle" onclick="toggleAccordion(this)">
+                        怎么做
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+                    </button>
+                    <div class="accordion-content">
+                        <ol class="accordion-steps">
+                            <li>把团队的工作SOP教给Cola（直接发文档或口述）</li>
+                            <li>Cola学会后，团队成员可以直接问她"XX流程怎么走"</li>
+                            <li>让Cola帮整理客户信息——"把最近一周的客户反馈汇总一下"</li>
+                            <li>新人入职直接跟Cola学习业务流程，减少带教时间</li>
+                        </ol>
+                    </div>
                 </div>
                 <div class="card-general" data-keywords="学生 求职 简历 面试 演讲 行业信息">
                     <div class="card-general-icon">🎓</div>
                     <div class="card-general-title">从简历到面试，Cola帮我准备</div>
                     <div class="card-general-desc">改简历、模拟面试、整理行业信息、准备演讲——节省3小时起。</div>
+                    <button class="accordion-toggle" onclick="toggleAccordion(this)">
+                        怎么做
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+                    </button>
+                    <div class="accordion-content">
+                        <ol class="accordion-steps">
+                            <li>把简历发给Cola说"帮我优化一下"，告诉她目标岗位</li>
+                            <li>说"帮我模拟面试"，Cola扮面试官提问+给反馈</li>
+                            <li>准备演讲/答辩时说"帮我做个大纲"，Cola拉结构</li>
+                            <li>跟Cola说"帮我追踪XX行业的招聘动态"，她定期给你更新</li>
+                        </ol>
+                    </div>
                 </div>
             </div>
         </div>
