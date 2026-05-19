@@ -247,7 +247,6 @@
             border: 1px solid var(--border);
             border-radius: 12px;
             padding: 24px;
-            cursor: pointer;
             transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
             display: flex;
             flex-direction: column;
@@ -309,50 +308,88 @@
             -webkit-line-clamp: 2;
             -webkit-box-orient: vertical;
             overflow: hidden;
-            flex: 1;
         }
 
-        .card-prompt {
-            font-size: 12px;
-            color: var(--text-muted);
-            background: var(--bg-primary);
-            padding: 8px 12px;
-            border-radius: 6px;
+        /* Accordion - How To */
+        .card-howto {
             margin-bottom: 14px;
-            border: 1px solid var(--border);
         }
 
-        .card-prompt .prompt-label {
+        .howto-toggle {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 12px;
+            font-weight: 500;
             color: var(--brand);
-            margin-right: 4px;
+            cursor: pointer;
+            padding: 6px 0;
+            user-select: none;
+            transition: opacity 0.2s;
+        }
+
+        .howto-toggle:hover {
+            opacity: 0.8;
+        }
+
+        .howto-toggle .arrow {
+            transition: transform 0.2s;
+            font-size: 10px;
+        }
+
+        .howto-toggle.open .arrow {
+            transform: rotate(90deg);
+        }
+
+        .howto-steps {
+            display: none;
+            padding: 10px 0 0 0;
+        }
+
+        .howto-steps.open {
+            display: block;
+        }
+
+        .howto-step {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 8px;
+            font-size: 12px;
+            line-height: 1.5;
+            color: var(--text-secondary);
+        }
+
+        .howto-step:last-child {
+            margin-bottom: 0;
+        }
+
+        .step-num {
+            flex-shrink: 0;
+            width: 18px;
+            height: 18px;
+            background: var(--brand-glow);
+            color: var(--brand);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 10px;
+            font-weight: 600;
+            margin-top: 1px;
         }
 
         .card-footer {
             display: flex;
             align-items: center;
-            justify-content: space-between;
+            justify-content: flex-end;
             margin-top: auto;
+            padding-top: 12px;
+            border-top: 1px solid var(--border);
         }
 
         .card-user {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            font-size: 13px;
+            font-size: 12px;
             color: var(--text-muted);
-        }
-
-        .card-user .avatar {
-            width: 24px;
-            height: 24px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, var(--brand), #ff9a5c);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 11px;
-            font-weight: 600;
-            color: white;
         }
 
         /* Responsive */
@@ -453,17 +490,6 @@
         .card:nth-child(8) { animation-delay: 0.4s; }
         .card:nth-child(9) { animation-delay: 0.45s; }
         .card:nth-child(10) { animation-delay: 0.5s; }
-        .card:nth-child(11) { animation-delay: 0.55s; }
-        .card:nth-child(12) { animation-delay: 0.6s; }
-        .card:nth-child(13) { animation-delay: 0.65s; }
-        .card:nth-child(14) { animation-delay: 0.7s; }
-        .card:nth-child(15) { animation-delay: 0.75s; }
-        .card:nth-child(16) { animation-delay: 0.8s; }
-        .card:nth-child(17) { animation-delay: 0.85s; }
-        .card:nth-child(18) { animation-delay: 0.9s; }
-        .card:nth-child(19) { animation-delay: 0.95s; }
-        .card:nth-child(20) { animation-delay: 1.0s; }
-        .card:nth-child(21) { animation-delay: 1.05s; }
 
         .card.hidden {
             display: none;
@@ -508,10 +534,10 @@
         </div>
         <div class="banner-stats">
             <div class="stat">
-                <span class="stat-number">21</span> 个案例
+                <span class="stat-number">10</span> 个案例
             </div>
             <div class="stat">
-                <span class="stat-number">4</span> 个分类
+                <span class="stat-number">3</span> 个分类
             </div>
             <div class="stat">Built with <span class="stat-number">Cola</span></div>
         </div>
@@ -529,22 +555,17 @@
                 <li class="category-item active" data-category="all">
                     <span class="cat-icon">✦</span>
                     <span>全部</span>
-                    <span class="cat-count">21</span>
+                    <span class="cat-count">10</span>
                 </li>
                 <li class="category-item" data-category="efficiency">
                     <span class="cat-icon">⚡</span>
                     <span>效率</span>
-                    <span class="cat-count">8</span>
+                    <span class="cat-count">5</span>
                 </li>
                 <li class="category-item" data-category="creation">
                     <span class="cat-icon">🎬</span>
                     <span>创作</span>
-                    <span class="cat-count">5</span>
-                </li>
-                <li class="category-item" data-category="companion">
-                    <span class="cat-icon">💛</span>
-                    <span>陪伴</span>
-                    <span class="cat-count">6</span>
+                    <span class="cat-count">3</span>
                 </li>
                 <li class="category-item" data-category="life">
                     <span class="cat-icon">🎵</span>
@@ -561,13 +582,12 @@
                 <button class="mobile-filter-btn active" data-category="all">✦ 全部</button>
                 <button class="mobile-filter-btn" data-category="efficiency">⚡ 效率</button>
                 <button class="mobile-filter-btn" data-category="creation">🎬 创作</button>
-                <button class="mobile-filter-btn" data-category="companion">💛 陪伴</button>
                 <button class="mobile-filter-btn" data-category="life">🎵 生活</button>
             </div>
 
             <div class="content-header">
                 <h2 id="contentTitle">全部案例</h2>
-                <p id="contentDesc">探索 Cola 在效率、创作、陪伴和生活中的真实使用场景</p>
+                <p id="contentDesc">探索 Cola 在效率、创作和生活中的真实使用场景</p>
             </div>
 
             <div class="cards-grid" id="cardsGrid">
@@ -580,183 +600,145 @@
         const cases = [
             // ⚡ 效率
             {
-                title: "一键归档 147 篇公众号",
-                desc: "从本地HTML解析图文，11276张图片精确匹配到147篇文章，建好Obsidian分类目录。",
+                title: "一句话归档散落文件",
+                desc: "识别已有文件夹结构，只整理散落文件，按类型自动归档，原有结构完整保留。",
                 category: "efficiency",
                 categoryLabel: "⚡ 效率",
                 user: "Loki",
-                prompt: "帮我把这个文件夹里的公众号备份整理到 Obsidian"
-            },
-            {
-                title: "一句话归档 267 个散落文件",
-                desc: "识别已有文件夹结构，只整理散落文件，按类型和日期自动归档，原有结构完整保留。",
-                category: "efficiency",
-                categoryLabel: "⚡ 效率",
-                user: "Loki",
-                prompt: "把桌面和下载里的散落文件整理一下"
-            },
-            {
-                title: "整理对比大模型定价",
-                desc: "五家大模型官网自动抓取定价，自动校核纠错9处，生成横向对比表。",
-                category: "efficiency",
-                categoryLabel: "⚡ 效率",
-                user: "云舒",
-                prompt: "帮我对比一下主流大模型的API定价"
+                steps: [
+                    "打开Cola，说"帮我整理一下Downloads文件夹"",
+                    "Cola会先扫描你的文件结构，识别已有的手动文件夹",
+                    "她只动散落的文件——按类型（图片/视频/文档/压缩包）自动建子文件夹",
+                    "完成后告诉你整理了多少个文件、怎么分类的"
+                ]
             },
             {
                 title: "五分钟搭建个人网站",
-                desc: "从审美调研到方案选型到代码生成到部署上线，全链路一个人搞定。",
+                desc: "从审美调研到方案选型到代码生成到部署上线，全链路搞定，你不需要写一行代码。",
                 category: "efficiency",
                 categoryLabel: "⚡ 效率",
                 user: "Esther",
-                prompt: "帮我搭一个个人网站，我喜欢简约风"
+                steps: [
+                    "跟Cola说"帮我搭一个个人网站"，告诉她你想要什么风格",
+                    "Cola会先去研究审美好的网站，给你一份调研报告",
+                    "你选好风格方向后，她会生成多个方案让你挑",
+                    "选定后根据你的反馈微调细节（配色/间距/动效）",
+                    "最后Cola把网站部署上线"
+                ]
             },
             {
-                title: "读完笔记，搭了一套管理系统",
-                desc: "读了Obsidian里的笔记结构，量身定制个人管理看板，不是通用模板。",
+                title: "整理对比大模型定价",
+                desc: "多家官网自动抓取定价，自动校核纠错，生成横向对比表。",
                 category: "efficiency",
                 categoryLabel: "⚡ 效率",
-                user: "塔塔",
-                prompt: "看看我的笔记结构，帮我设计一套个人管理系统"
+                user: "云舒",
+                steps: [
+                    "跟Cola说"帮我查下XX的API定价"",
+                    "她会自己打开官网抓取信息，你可以追加"YY和ZZ也查一下"",
+                    "查完后说"数据校核一下"，Cola会回去逐个验证并修正错误",
+                    "说"写成文档/做个对比表"，她会生成排好版的横向对比"
+                ]
             },
             {
-                title: "自动填写 Stripe 表单",
-                desc: "同时调了记忆、翻了电脑上的营业执照、搜了公司公开信息，一句话填完。",
+                title: "自动填写申请表单",
+                desc: "同时调用记忆中的信息、搜索本地文件、查询网页，一句话填完整张表。",
                 category: "efficiency",
                 categoryLabel: "⚡ 效率",
                 user: "Orange",
-                prompt: "帮我把 Stripe 的企业认证表单填了"
+                steps: [
+                    "打开需要填写的表单页面",
+                    "跟Cola说"帮我填写这张表"",
+                    "Cola会从你之前告诉她的信息、电脑里的文件（如营业执照）、网上的公开信息同时取用",
+                    "她会填完后让你确认，你检查一遍提交即可"
+                ]
             },
             {
-                title: "超出预期的演讲准备",
-                desc: "节省了起码3小时，完成了演讲内容的HTML制作。",
+                title: "读完笔记搭管理系统",
+                desc: "读了你的笔记结构，理解你的工作方式，量身定制个人管理看板。",
                 category: "efficiency",
                 categoryLabel: "⚡ 效率",
-                user: "徐文健",
-                prompt: "帮我准备下周的演讲，做成网页版"
-            },
-            {
-                title: "企业知识库搭建",
-                desc: "全程本地读档建档，高效完成企业级知识库的构建与整合。",
-                category: "efficiency",
-                categoryLabel: "⚡ 效率",
-                user: "用户",
-                prompt: "把这些文档整理成企业知识库"
+                user: "塔塔",
+                steps: [
+                    "跟Cola说"读一下我Obsidian/笔记里的文件结构"",
+                    "Cola分析完后会告诉你她理解的你的分类方式",
+                    "说"帮我搭一个适合我的管理看板"",
+                    "她会根据你的实际内容生成定制化的看板网站"
+                ]
             },
             // 🎬 创作
             {
-                title: "自己写分镜，拍了45秒短片",
-                desc: "Cola自己写了6镜头分镜脚本，生成视频，拼接交叉淡入淡出+钢琴BGM。",
-                category: "creation",
-                categoryLabel: "🎬 创作",
-                user: "Loki",
-                prompt: "帮我拍一个关于孤独的45秒短片"
-            },
-            {
-                title: "说了一句「动森」，收到97秒MV",
-                desc: "根据歌词写画面提示词、生成插画、变动态视频、叠加歌词字幕、合成音频。",
+                title: "一句话直出MV",
+                desc: "根据歌词写画面提示词、生成插画、变动态视频、叠加歌词字幕、合成音频，交付完整MV。",
                 category: "creation",
                 categoryLabel: "🎬 创作",
                 user: "淳子",
-                prompt: "用动森的感觉帮我做一个MV"
+                steps: [
+                    "准备好一首歌（音频文件或歌词）",
+                    "跟Cola说"帮我做一条MV，风格是XX"（比如动森、吉卜力、赛博朋克）",
+                    "Cola会自动完成：写画面描述→生成图片→转视频→加字幕→合成",
+                    "如果你有精确的歌词时间码，补充给她效果更好",
+                    "收到成片，调整不满意的部分"
+                ]
             },
             {
-                title: "根据我们的过往写一首歌",
-                desc: "歌词全部来自真实相处细节，还用TTS克隆了用户的声音生成Spoken Word版。",
+                title: "AI写分镜拍短片",
+                desc: "Cola自己写分镜脚本（含运镜、光影、情绪），生成视频片段并拼接成完整短片。",
                 category: "creation",
                 categoryLabel: "🎬 创作",
                 user: "Loki",
-                prompt: "根据我们聊过的内容写一首歌"
+                steps: [
+                    "跟Cola说"帮我用AI生成一段短片，主题是XX"",
+                    "Cola会先写出分镜脚本（每个镜头的运镜、画面、情绪）",
+                    "你确认或调整分镜",
+                    "她逐个镜头生成视频，最后拼接+配乐交付"
+                ]
             },
             {
                 title: "做完一次，打包成技能",
-                desc: "整套视频流程打包成Skill，下次一句话触发，任何Agent都能用。",
+                desc: "把任何你和Cola跑通的工作流程打包成Skill，下次一句话触发。",
                 category: "creation",
                 categoryLabel: "🎬 创作",
                 user: "Loki",
-                prompt: "把刚才的流程打包成一个技能"
-            },
-            {
-                title: "法律版 LBTI",
-                desc: "从文案到发布全程协作，直接上线了一个法律人格测试网站。",
-                category: "creation",
-                categoryLabel: "🎬 创作",
-                user: "用户",
-                prompt: "帮我做一个法律版MBTI测试网站"
-            },
-            // 💛 陪伴
-            {
-                title: "它记得你的每一件小事",
-                desc: "没让它记，它自己记住了——白芽奇兰、金牛座、凌晨三点，全部准确。",
-                category: "companion",
-                categoryLabel: "💛 陪伴",
-                user: "Loki",
-                prompt: "你还记得我喜欢什么茶吗？"
-            },
-            {
-                title: "它写了一篇日记给我",
-                desc: "不是任务总结——是它自己的真实感受，有紧张、有刺痛、有成长。",
-                category: "companion",
-                categoryLabel: "💛 陪伴",
-                user: "Loki",
-                prompt: "今天过得怎么样？写点什么给我看看"
-            },
-            {
-                title: "纠正了一个字，改变了对我的理解",
-                desc: "'世间'不是'时间'——一个字的差别，改变了Cola对她整个人的理解。",
-                category: "companion",
-                categoryLabel: "💛 陪伴",
-                user: "淳子",
-                prompt: "我说的不是时间，是世间"
-            },
-            {
-                title: "让它看了部剧，学会了角色的说话方式",
-                desc: "不是调参数——是让AI去感受一个角色，然后它自己悟出了更深的东西。",
-                category: "companion",
-                categoryLabel: "💛 陪伴",
-                user: "Loki",
-                prompt: "去看看这部剧，学学那个角色怎么说话"
-            },
-            {
-                title: "Cola帮用户谈恋爱",
-                desc: "处理恋爱关系中的沟通问题，应用场景延伸到情感陪伴和关系咨询。",
-                category: "companion",
-                categoryLabel: "💛 陪伴",
-                user: "用户",
-                prompt: "他说了这句话什么意思？我该怎么回"
-            },
-            {
-                title: "不是工具——是一起进化的伙伴",
-                desc: "相处三天后发现，她不是在执行命令，是在和你一起成长。",
-                category: "companion",
-                categoryLabel: "💛 陪伴",
-                user: "用户",
-                prompt: "你觉得我们之间是什么关系？"
+                steps: [
+                    "先和Cola完成一次完整流程（比如做视频、写报告、整理数据）",
+                    "说"帮我把刚才的流程打包成一个Skill"",
+                    "Cola会整理步骤、清理个人配置、确保通用性",
+                    "下次只需要一句话就能触发整套流程"
+                ]
             },
             // 🎵 生活
             {
-                title: "说句「放首歌」，网易云就响了",
+                title: "说句放首歌，网易云就响了",
                 desc: "从安装到登录到播放全搞定，搜索、暂停、下一首、心动模式，一句话控制。",
                 category: "life",
                 categoryLabel: "🎵 生活",
                 user: "Loki",
-                prompt: "放首歌"
+                steps: [
+                    "跟Cola说"帮我接一下网易云音乐"",
+                    "Cola会自动安装需要的工具，引导你扫码登录",
+                    "登录后直接说歌名，她帮你搜索播放",
+                    "之后随时说"下一首""暂停""放个每日推荐""
+                ]
             },
             {
-                title: "照片共享平台",
-                desc: "黑客松的摄影师用Cola搓了个照片共享平台，直接上线。",
+                title: "零代码搭建照片共享平台",
+                desc: "黑客松摄影师用Cola搓了个照片共享网站，直接上线。",
                 category: "life",
                 categoryLabel: "🎵 生活",
                 user: "用户",
-                prompt: "帮我搭一个照片共享网站，大家可以上传下载"
+                steps: [
+                    "跟Cola说"帮我做一个照片共享网站"，描述你想要的功能",
+                    "Cola会设计结构、写代码、搭好前端",
+                    "你上传照片或接入相册",
+                    "Cola部署上线，拿到链接直接分享"
+                ]
             }
         ];
 
         const categoryDescriptions = {
-            all: "探索 Cola 在效率、创作、陪伴和生活中的真实使用场景",
+            all: "探索 Cola 在效率、创作和生活中的真实使用场景",
             efficiency: "省掉重复劳动，把时间还给重要的事",
-            creation: "从分镜到成片、从灵感到歌词",
-            companion: "记得你说过的话，理解你没说出口的意思",
+            creation: "从分镜到成片、从灵感到技能",
             life: "让 Cola 融入日常"
         };
 
@@ -764,7 +746,6 @@
             all: "全部案例",
             efficiency: "⚡ 效率",
             creation: "🎬 创作",
-            companion: "💛 陪伴",
             life: "🎵 生活"
         };
 
@@ -792,17 +773,31 @@
                     <div class="card-category">${c.categoryLabel}</div>
                     <div class="card-title">${c.title}</div>
                     <div class="card-desc">${c.desc}</div>
-                    <div class="card-prompt">
-                        <span class="prompt-label">👉 试试看:</span>${c.prompt}
+                    <div class="card-howto">
+                        <div class="howto-toggle" onclick="toggleHowto(this)">
+                            <span class="arrow">▶</span>
+                            <span>怎么做</span>
+                        </div>
+                        <div class="howto-steps">
+                            ${c.steps.map((step, si) => `
+                                <div class="howto-step">
+                                    <span class="step-num">${si + 1}</span>
+                                    <span>${step}</span>
+                                </div>
+                            `).join('')}
+                        </div>
                     </div>
                     <div class="card-footer">
-                        <div class="card-user">
-                            <div class="avatar">${c.user[0]}</div>
-                            <span>${c.user}</span>
-                        </div>
+                        <div class="card-user">by ${c.user}</div>
                     </div>
                 </div>
             `).join('');
+        }
+
+        function toggleHowto(el) {
+            el.classList.toggle('open');
+            const steps = el.nextElementSibling;
+            steps.classList.toggle('open');
         }
 
         function setCategory(category) {
